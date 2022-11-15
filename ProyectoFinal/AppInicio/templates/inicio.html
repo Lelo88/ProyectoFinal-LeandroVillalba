@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+		
+    <section class="home-section text-dark">
+        <div class="col-6 ">
+            <br><br>
+            <div class="col-lg-10 col-md-10 main-text">
+                <h1 class="heading">Si no te acordás, nosotros te ayudamos</h1>
+                <p class="subheading">Anota y recuerda lo que quieras en todo lugar y momento</p>
+                {% if user.is_authenticated %}
+                <a class="btn btn-dark btn-lg starting-btn" href="">View Notes</a>
+                {% else %}
+                <a class="btn btn-dark btn-lg starting-btn" href="{% url 'Registro' %}">Empecemos</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </section>
+
+</div>
+{% endblock body %}
+
+{% block footer %}
+        {% include 'footer.html' %}
+{% endblock footer %}
+    
