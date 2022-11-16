@@ -4,11 +4,12 @@
 {% block body %}
 <div class="add-modal" id="add-modal">
     <div class="form">
-        <form action="" method="post">
+        <form action="{% url 'Agregado-Notas' %}" method="post">
             {% csrf_token %}
             <h3>Agrega tus notas</h3>
-           
+            
             <div class="form-group">
+                {{notas.as_p}}
                 <button type="submit" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-danger close-btn" onclick="closeModal('add-modal')">Cancel</button>
             </div>
