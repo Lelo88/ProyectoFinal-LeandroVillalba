@@ -44,13 +44,13 @@ def loginView(request):
             if user:
                 
                 login(request, user)
-                return render(request, 'base.html', {'mensaje': f'Aca van las notas'})
+                return render(request, 'notas_inicio.html', {'mensaje': f'Aca van las notas'})
                 #return render(request, '/ProyectoFinal/AppNotas/templates/notas.html', {'mensaje' : f'Bienvenido {usuario}'})
             
             else:
-                return render(request, 'registro.html')
+                return redirect('Login')
         
-        return render(request, "registro.html")
+        return redirect('Login')
     
     else: 
         

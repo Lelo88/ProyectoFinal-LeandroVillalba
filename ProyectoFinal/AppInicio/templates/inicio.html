@@ -11,19 +11,20 @@
                 <h1 class="heading">Si no te acordás, nosotros te ayudamos</h1>
                 <p class="subheading">Anota y recuerda lo que quieras en todo lugar y momento</p>
                 {% if user.is_authenticated %}
-                <a class="btn btn-dark btn-lg starting-btn" href="">View Notes</a>
+                <a class="btn btn-dark btn-lg starting-btn" href="">Ver notas</a>
                 {% else %}
-                <a class="btn btn-dark btn-lg starting-btn" href="{% url 'Registro' %}">Empecemos</a>
+                <a class="btn btn-dark btn-lg starting-btn" href="{% url 'Login' %}">Empecemos</a>
                 {% endif %}
             </div>
 
         </div>
     </section>
-
 </div>
+    {% block footer %}
+        {% include 'footer.html' %}
+    {% endblock footer %}
+
 {% endblock body %}
 
-{% block footer %}
-        {% include 'footer.html' %}
-{% endblock footer %}
+
     
