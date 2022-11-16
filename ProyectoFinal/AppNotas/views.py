@@ -5,3 +5,5 @@ def inicio_nota(request):
     notas = Nota.objects.all()
     return render(request, 'notas_inicio.html',{'notas': notas})
 
+def agregado_notas(request):
+    return render(request, 'agregado_notas.html')
