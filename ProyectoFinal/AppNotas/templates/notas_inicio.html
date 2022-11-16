@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
 {% block body %}
+
+{% if notas %}
+
+{% else %}
 <div class="container">
-    <h1>Aca estan las notas</h1>
-   <p>{{mensaje}}</p> 
+    <h1>Todavia no tienes notas creadas...</h1>
 </div>
-
-
+{% endif %}
+    
     
 {% endblock body %}
     

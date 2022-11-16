@@ -1,9 +1,9 @@
 from django.urls import path, include
 
-from .views import notas
+from .views import inicio_nota
 
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path('notas/', notas, name = 'Notas'),
+    path('notas/', inicio_nota, name = 'Notas'),
 ]
