@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-{% if notas %}
+    
+{% if usuario %}
 <div class="container">
     <br>
     <h1>Tus notas</h1>
@@ -14,21 +14,22 @@
             <p>{{nota.cuerpo}}</p>
             <div class="options">
                 <a href="" class="btn btn-success">Update</a>
-                <a href="" class="btn btn-danger">Delete</a>
+                <a href="{% url 'Borrar-Notas' nota.id %}" class="btn btn-danger">Delete</a>
             </div>
         </div>
         {% endfor %}
             
     </div>
 </div>
+
 {% else %}
 <div class="container">
     <h1>Todavia no tienes notas creadas...</h1>
     <br>
     <a class="btn btn-dark btn-lg starting-btn" href="{% url 'Agregado-Notas' %}">Empecemos</a>
 </div>
+
 {% endif %}
-    
-    
+      
 {% endblock body %}
     

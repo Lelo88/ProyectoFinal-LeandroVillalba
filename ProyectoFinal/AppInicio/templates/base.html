@@ -17,10 +17,10 @@
 
                 {% if user.is_authenticated %}
                 <li class="nav-item active">
-                    <p>{{user.username}}</p>
+                    <a class="nav-link user-select-none"href="">{{user.username}}</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'Inicio' %}">Keep Notes</span></a>
+                    <a class="nav-link" href="{% url 'Inicio' %}">Inicio</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link add" href="{% url 'Agregado-Notas' %}">¡Agregá tus notas!</a>
@@ -29,7 +29,7 @@
                     <a class="nav-link add" href="">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link add" href="{% url 'Logout' %}">Log Out</a>
+                    <a class="nav-link add" href="{% url 'Logout' %}">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item active">
