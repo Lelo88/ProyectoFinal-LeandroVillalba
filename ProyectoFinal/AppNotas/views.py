@@ -11,12 +11,10 @@ from django.contrib.auth.models import User
 
 @login_required
 def inicio_nota(request):
-    notas = Nota.objects.all()
-    usuario=User.objects.all()
-    if usuario.exists():
-        return render(request, 'notas_inicio.html',{'notas': notas,'usuario':usuario})
-    
+    usuario=request.user.id
+    notas = Nota.objects.filter(autor=usuario)
     return render(request, 'notas_inicio.html',{'notas': notas})
+    
     
 def agregado_notas(request):
     
@@ -24,8 +22,9 @@ def agregado_notas(request):
         notas = CrearNota(request.POST)
         
         if notas.is_valid():
-            nota = notas.save(commit = False)
-            nota.user =request.user
+            info_notas = notas.cleaned_data
+            nota = Nota(titulo = info_notas['titulo'], cuerpo = info_notas['cuerpo'], autor = request.user)
+            nota.autor =request.user
             nota.save()        
             
             return redirect('Notas')

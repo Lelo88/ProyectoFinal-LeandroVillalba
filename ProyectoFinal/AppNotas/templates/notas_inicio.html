@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block body %}
     
-{% if usuario %}
+{% if notas %}
 <div class="container">
     <br>
     <h1>Tus notas</h1>
@@ -12,6 +12,7 @@
         <div class="note">
             <h2 class="text-info">{{nota.titulo}}</h2>
             <p>{{nota.cuerpo}}</p>
+            <p>{{nota.fecha_creacion|naturaltime}}</p>
             <div class="options">
                 <a href="" class="btn btn-success">Update</a>
                 <a href="{% url 'Borrar-Notas' nota.id %}" class="btn btn-danger">Delete</a>
@@ -30,6 +31,8 @@
 </div>
 
 {% endif %}
-      
+<div class="imagen">
+    <img class="float-right" src="https://automatictransmission.com.au/wp-content/uploads/2016/03/Writing-in-Notepad.png" style="height: 200px;" alt="notes">
+</div>
 {% endblock body %}
     

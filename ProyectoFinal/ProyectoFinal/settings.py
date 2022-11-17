@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AppInicio',
     'AppNotas',
-    'AppUsuario'
+    'AppUsuario',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [

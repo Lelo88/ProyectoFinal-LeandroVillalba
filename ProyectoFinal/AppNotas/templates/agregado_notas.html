@@ -4,7 +4,7 @@
 {% block body %}
 <div class="add-modal" id="add-modal">
     <div class="form">
-        <form action="{% url 'Agregado-Notas' %}" method="post">
+        <form action="{% url 'Agregado-Notas' %}" method="POST">
             {% csrf_token %}
             <h3>Agrega tus notas</h3>
             
