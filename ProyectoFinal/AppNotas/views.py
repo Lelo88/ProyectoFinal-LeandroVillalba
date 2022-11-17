@@ -2,7 +2,7 @@ from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from .models import Nota
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
-from .forms import CrearNota
+from .forms import CrearNota, ActualizaNota
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
@@ -41,5 +41,18 @@ def borrar_notas(request, id):
 
     return redirect('Notas')
 
-def edita_notas():
-    pass
+def edita_notas(request, id):
+    nota_actualizada = Nota.objects.get(id=id)
+    formulario_edicion = ActualizaNota(instance = nota_actualizada)
+    
+    if request.metod == 'POST':
+        formulario_edicion = ActualizaNota(request.POST)
+        
+        if formulario_edicion. is_valid():
+            
+            nota_actualizada.titulo = formulario_edicion['titulo']
+            nota_actualizada.cuerpo = formulario_edicion['cuerpo']
+            
+            nota_actualizada.save()
+            
+            return redirect('Notas')
