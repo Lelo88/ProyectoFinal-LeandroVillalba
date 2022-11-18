@@ -45,14 +45,21 @@ def edita_notas(request, id):
     nota_actualizada = Nota.objects.get(id=id)
     formulario_edicion = ActualizaNota(instance = nota_actualizada)
     
-    if request.metod == 'POST':
+    if request.method == 'POST':
         formulario_edicion = ActualizaNota(request.POST)
         
         if formulario_edicion. is_valid():
             
-            nota_actualizada.titulo = formulario_edicion['titulo']
-            nota_actualizada.cuerpo = formulario_edicion['cuerpo']
+            nota_actualizada.titulo = formulario_edicion.cleaned_data['titulo']
+            nota_actualizada.cuerpo = formulario_edicion.cleaned_data['cuerpo']
             
             nota_actualizada.save()
             
             return redirect('Notas')
+    
+    contexto = {
+        'nota': nota_actualizada,
+        'formulario': formulario_edicion
+    }
+    
+    return render(request,'editar_notas.html', contexto)
