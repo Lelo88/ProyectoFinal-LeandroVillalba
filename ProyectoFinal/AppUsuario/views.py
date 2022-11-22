@@ -1,11 +1,12 @@
 from django.shortcuts import render
 
-# Create your views here.
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm, Autenticacion
-from django.contrib.auth import authenticate, login, logout
+from .forms import UserRegisterForm, Autenticacion, EditaUsuario
+from django.contrib.auth import authenticate, login
 
-# Create your views here.
+from django.contrib import messages
+
+
 
 def registrar(request):
     
@@ -44,9 +45,7 @@ def loginView(request):
             if user:
                 
                 login(request, user)
-                return redirect('Notas')
-                #return render(request, '/ProyectoFinal/AppNotas/templates/notas.html', {'mensaje' : f'Bienvenido {usuario}'})
-            
+                return redirect('Notas')            
             else:
                 return redirect('Login')
         
@@ -58,4 +57,31 @@ def loginView(request):
         
         return render(request, "login.html", {"mi_formulario": mi_formulario})
 
-# Create your views here.
+def editar_usuario(request):
+    
+    usuario = request.user
+    
+    if request.method == 'POST':
+        
+        formulario_usuario = EditaUsuario(request.POST)
+        
+        if formulario_usuario.is_valid():
+            
+            data = formulario_usuario.cleaned_data
+            
+            usuario.first_name = data['first_name']
+            usuario.last_name = data['last_name']
+            usuario.username = data['username']
+            usuario.email = data['email']
+            usuario.set_password(data['password1'])
+            
+            usuario.save()
+            
+            return redirect('Inicio')
+        
+        return redirect('Editar-Usuario')
+    
+    else:
+        formulario_usuario = EditaUsuario(instance = request.user)
+        
+        return render(request,'edita-perfil.html', {'formulario_usuario': formulario_usuario})

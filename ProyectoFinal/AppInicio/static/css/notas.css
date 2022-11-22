@@ -13,3 +13,7 @@
     width: 50px;
 }
 
+.fondo{
+    background: local;
+    background-image: url("https://www.freejpg.com.ar/asset/OLD/comps/f003875.jpg");
+}
