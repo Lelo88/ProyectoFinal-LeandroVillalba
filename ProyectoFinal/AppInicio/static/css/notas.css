@@ -17,3 +17,25 @@
     background: local;
     background-image: url("https://www.freejpg.com.ar/asset/OLD/comps/f003875.jpg");
 }
+
+.imagen-inicio{
+	margin: 10px;
+}
+
+.fondo-body{
+    background-image: url();
+    background-image: radial-gradient(ellipse at left bottom, rgb(74, 74, 82) 0%,rgba(81, 78, 87, 0.9) 59%, rgba(92, 95, 105, 0.9) 100%);
+
+}
+
+.fondo-body::after{
+    
+}
+
+.heading{
+    color: aqua;
+}
+
+.subheading{
+    color: chartreuse;
+}
