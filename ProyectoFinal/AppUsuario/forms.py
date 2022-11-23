@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.core.files.images import get_image_dimensions
+
+
 
 
 class UserRegisterForm(UserCreationForm):
@@ -14,7 +17,7 @@ class UserRegisterForm(UserCreationForm):
             'username': forms.TextInput(attrs={'class': 'login__input', 'id':'login-input-user'}),
             'email': forms.EmailInput(attrs={'class': 'login__input', 'id':'login-input-user'}),
             'password1': forms.PasswordInput(attrs={'class':'login__input','id':'login-input-password'}),
-            'password2': forms.PasswordInput(attrs={'class':'login__input','id':'login-input-password'}),
+            'password2': forms.PasswordInput(attrs={'class':'login__input','id':'login-input-password'})
         }
 
 class Autenticacion(AuthenticationForm):

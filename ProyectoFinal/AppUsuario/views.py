@@ -69,9 +69,6 @@ def editar_usuario(request):
             
             data = formulario_usuario.cleaned_data
             
-            usuario.first_name = data['first_name']
-            usuario.last_name = data['last_name']
-            usuario.username = data['username']
             usuario.email = data['email']
             usuario.set_password(data['password1'])
             

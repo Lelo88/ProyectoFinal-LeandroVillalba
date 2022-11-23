@@ -11,8 +11,8 @@
         {% for nota in notas %}
         <div class="note">
             <h2 class="text-info">{{nota.titulo}}</h2>
-            <p>{{nota.cuerpo}}</p>
-            <p>{{nota.fecha_actualizada|naturaltime}}</p>
+            <p style="color:azure">{{nota.cuerpo}}</p>
+            <p style="color: azure;">{{nota.fecha_actualizada|naturaltime}}</p>
             <div class="options">
                 <a href="{% url 'Editado-Notas' nota.id %}" class="btn btn-success">Update</a>
                 <a href="{% url 'Borrar-Notas' nota.id %}" class="btn btn-danger">Delete</a>

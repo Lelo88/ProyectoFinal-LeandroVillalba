@@ -2,12 +2,14 @@
 
 
 {% block body %}
-<form  method="POST">{% csrf_token %}
+<div class="container">
+    <form method="POST">{% csrf_token %}
 
     {{formulario_usuario.as_p}}
 
     <input type="submit" value="Actualizar" class="btn-info btn"/>
 
 </form>
+</div>
 {% endblock body %}
     

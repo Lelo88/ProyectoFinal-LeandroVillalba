@@ -370,7 +370,8 @@ tr {
 }
 
 label {
-    display: inline-block
+    display: inline-block;
+    color: white;
 }
 
 button {
@@ -7648,7 +7649,7 @@ fieldset:disabled .btn {
 }
 
 .text-bg-info {
-    color: #000 !important;
+    color: #fff !important;
     background-color: RGBA(13, 202, 240, var(--bs-bg-opacity, 1)) !important
 }
 
