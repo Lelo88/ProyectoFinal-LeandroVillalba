@@ -3,14 +3,21 @@
 
 {% block body %}
 <div class="container">
-    <form method="POST">{% csrf_token %}
+    <div class="container">
 
-    {{formulario_usuario.as_p}}
-    {{formulario_avatar.as_p}}
+    
+    <h3 class="text-primary align-item">Edicion de usuario</h3>
+    <div class="form">
+        <form method="POST">{% csrf_token %}
 
-    <input type="submit" value="Actualizar" class="btn-info btn"/>
-
-</form>
+            {{formulario_usuario.as_p}}
+            
+        
+            <input type="submit" value="Actualizar" class="btn-info btn"/>
+        
+        </form>
+    </div>
+</div>
 </div>
 {% endblock body %}
     

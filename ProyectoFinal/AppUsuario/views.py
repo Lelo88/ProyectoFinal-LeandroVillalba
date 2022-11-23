@@ -60,7 +60,7 @@ def loginView(request):
 def editar_usuario(request):
     
     usuario = request.user
-    avatar = Avatar.objects.all(request.user)
+    
     
     if request.method == 'POST':
         
