@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.files.images import get_image_dimensions
-
+from .models import Avatar
 
 
 
@@ -37,17 +37,30 @@ class EditaUsuario(UserChangeForm):
         widget= forms.HiddenInput(), required = False
     )
     username=forms.CharField(required=False)
-    email=forms.CharField(required=False)
     password1 = forms.CharField(label = "Contraseña", widget=forms.PasswordInput)
     password2 = forms.CharField(label = "Repita la contraseña", widget=forms.PasswordInput)
     
     class Meta: 
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
+        fields = ['username', 'password1', 'password2']
         
         
     def clean_password2(self):
         password2 = self.cleaned_data['password2']
         if password2 != self.cleaned_data['password1']:
             raise forms.ValidationError('¡No coinciden las contraseñas!')
-        return password2 
+        return password2    
+    
+class FormAvatar(forms.ModelForm):
+    class Meta:
+        model = Avatar
+        fields = ['avatar']
+        widgtes = {
+            'avatar': forms.ImageField(required=True, show_hidden_initial=True)
+        }
+        
+class EditaAvatar(forms.ModelForm):
+    class Meta:
+        model = Avatar
+        fields = ['avatar']
+        

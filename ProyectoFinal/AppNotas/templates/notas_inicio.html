@@ -5,7 +5,7 @@
 {% if notas %}
 <div class="container">
     <br>
-    <h1>Tus notas</h1>
+    <h1 style="color:azure">Tus notas</h1>
     <div class="notes">
         
         {% for nota in notas %}
@@ -25,7 +25,7 @@
 
 {% else %}
 <div class="container">
-    <h1>Todavia no tienes notas creadas...</h1>
+    <h1 style="color:azure;">Todavia no tienes notas creadas...</h1>
     <br>
     <a class="btn btn-dark btn-lg starting-btn" href="{% url 'Agregado-Notas' %}">Empecemos</a>
 </div>

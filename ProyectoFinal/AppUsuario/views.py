@@ -3,9 +3,9 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm, Autenticacion, EditaUsuario
 from django.contrib.auth import authenticate, login
-
-from django.contrib import messages
-
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
+from django.contrib.auth.models import User
+from .models import Avatar
 
 
 def registrar(request):
@@ -60,6 +60,7 @@ def loginView(request):
 def editar_usuario(request):
     
     usuario = request.user
+    avatar = Avatar.objects.all(request.user)
     
     if request.method == 'POST':
         
@@ -69,14 +70,16 @@ def editar_usuario(request):
             
             data = formulario_usuario.cleaned_data
             
+            usuario.first_name = data['first_name']
+            usuario.last_name = data['last_name']
+            usuario.username = data['username']
             usuario.email = data['email']
             usuario.set_password(data['password1'])
             
             usuario.save()
             
             return redirect('Inicio')
-        
-        return redirect('Editar-Usuario')
+        return redirect('Edita-Usuario')
     
     else:
         formulario_usuario = EditaUsuario(instance = request.user)

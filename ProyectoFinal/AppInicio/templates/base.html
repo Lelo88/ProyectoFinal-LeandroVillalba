@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <link rel="stylesheet" href="{% static '/css/notas.css' %}">
     <link rel="stylesheet" href="{% static '/css/styles.css' %}">
-    <title>Document</title>
+    <title>App-Notas</title>
 </head>
 
 <body>
@@ -17,8 +17,8 @@
 
                 {% if user.is_authenticated %}
                 <li class="nav-item active">
-                    <a class="nav-link user-select-none" href=""> Hola {{user.username}}!</a>
-                </li>
+                        <img style="margin-left: 2.5px;" class="" height="40px" src="{% static '/images/M106.jpg' %}">
+                    </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'Inicio' %}">Inicio</span></a>
                 </li>
@@ -29,11 +29,11 @@
                     <a class="nav-link add" href="{% url 'Editar-Usuario' %}">Configuraciòn de perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link add" href="{% url 'Logout' %}">Logout</a>
+                      <a class="nav-link add" href="{% url 'Logout' %}">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item active">
-                    <img style="margin-left: 10px;" height="50px" src="{% static '/images/M106.jpg' %}">
+                    <img style="margin-left: 10px;" height="40px" src="{% static '/images/M106.jpg' %}">
                 </li>
                 <li class="nav-item">
                     <a class="nav-link add" href="{% url 'Registro' %}">Regístrate</a>
@@ -56,8 +56,6 @@
     {% block logout %}
 
     {% endblock logout %}
-
-   
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
