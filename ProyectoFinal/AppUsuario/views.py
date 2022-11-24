@@ -5,17 +5,19 @@ from .forms import UserRegisterForm, Autenticacion, EditaUsuario
 from django.contrib.auth import authenticate, login
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.contrib.auth.models import User
-from .models import Avatar
+
 
 
 def registrar(request):
     
     if request.method == 'POST':
         mi_formulario = UserRegisterForm(request.POST)
+        
         if mi_formulario.is_valid():
             
             nom_usuario = mi_formulario.cleaned_data['username']
             mi_formulario.save()
+            
             
             return render(request, 'inicio.html', {'mensaje': f'Usuario {nom_usuario} creado con exito'})
         
@@ -26,6 +28,7 @@ def registrar(request):
     else: 
         
         mi_formulario = UserRegisterForm()
+        formulario_avatar = FormAvatar(request.user.id) #esta linea aggrego
         
         return render(request, 'registro.html', {'mi_formulario': mi_formulario})
     
