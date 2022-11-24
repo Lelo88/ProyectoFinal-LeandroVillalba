@@ -28,7 +28,6 @@ def registrar(request):
     else: 
         
         mi_formulario = UserRegisterForm()
-        formulario_avatar = FormAvatar(request.user.id) #esta linea aggrego
         
         return render(request, 'registro.html', {'mi_formulario': mi_formulario})
     
